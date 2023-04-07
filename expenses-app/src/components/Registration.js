@@ -24,15 +24,15 @@ const Registration = (props) => {
     const [form] = Form.useForm();
     return (
         <div style={{ backgroundImage: `url(${expenseImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', justifyContent: 'center', alignItems: 'center', display: 'flex', height: '100vh' }}>
-            <Card title={<Title strong >REGISTRATION FORM</Title>} style={{ height: '70vh', width: '70vh', backgroundColor: 'beige', alignItems: 'center' }}>
+            <Card title={<Title strong >REGISTRATION FORM</Title>} style={{ height: '80vh', width: '70vh', backgroundColor: 'beige', alignItems: 'center' }}>
                 <Formik
                     initialValues={{ username: '', email: '', password: '', confirm_password: '' }}
                     validationSchema={Yup.object({
                         username: Yup.string()
                             .min(5, 'ERROR:Must be minimum 5 characters')
-                            .max(15, 'ERROR:Must be 15 characters or less')
-                            .required('ERROR:Required'),
-                        email: Yup.string().email('ERROR:Invalid email address').required('ERROR:Required'),
+                            .max(15, 'Must be 15 characters or less')
+                            .required('Required'),
+                        email: Yup.string().email('Invalid email address').required('Required'),
                         password: Yup.string().min(8, 'ERROR:Password must be 8 characters long')
                             .matches(/[0-9]/, 'ERROR:Password requires a number')
                             .matches(/[a-z]/, 'ERROR:Password requires a lowercase letter')
@@ -88,24 +88,22 @@ const Registration = (props) => {
                                 rules={[{ required: true, message: 'Please input your username!' }]}
                             >
                                 <Input {...formik.getFieldProps('username')} />
-
-                            </Form.Item>
-                            <span>
                                 {formik.touched.username && formik.errors.username ? (
                                     <div style={{ color: 'red' }}>{formik.errors.username}</div>
                                 ) : null}
-                            </span>
+                            </Form.Item>
                             <Form.Item
                                 label="Email"
                                 name="email"
                                 rules={[{ required: true, message: 'Please input your email!' }]}
                             >
                                 <Input {...formik.getFieldProps('email')} />
+                                {formik.touched.email && formik.errors.email ? (
+                                <div style={{ color: 'red' }}>{formik.errors.email}</div>
+                            ) : null}
                             </Form.Item>
 
-                            {formik.touched.email && formik.errors.email ? (
-                                <div style={{ color: 'red', marginLeft: '150px' }}>{formik.errors.email}</div>
-                            ) : null}
+                            
 
                             <Form.Item
                                 label="Password"

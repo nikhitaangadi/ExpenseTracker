@@ -44,6 +44,8 @@ const EditUserProfile = (props) => {
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [modalText, setModalText] = useState('Content of the modal');
 
+    console.log('File',file)
+
     const handleChange = (e) => {
         if (e.target.name === 'name') {
             setName(e.target.value)
@@ -148,7 +150,7 @@ const EditUserProfile = (props) => {
                         label="profilePic"
                         rules={[{ required: true, message: 'Required!' }]}
                     >
-                        <input type='file' required name="profilePic" onChange={handleChange} />
+                        <input type='file'  required name="profilePic" onChange={handleChange} />
                     </Form.Item>
 
                     <Form.Item>

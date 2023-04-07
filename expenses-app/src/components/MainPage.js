@@ -14,6 +14,8 @@ const MainPage=(props)=>{
         backgroundRepeat: 'no-repeat',
         backdropFilter: 'blur(8px)',
         }}>
+            {/* <Title style={{backgroundColor:'linen'}}>EXPENSE TRACKING APPLICATION</Title> */}
+            
         </div>
     )
 }
