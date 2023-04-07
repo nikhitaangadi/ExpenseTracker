@@ -1,0 +1,41 @@
+const express = require('express')
+const router = express.Router()
+const UserController = require('../app/controllers/UserController')
+const BudgetController = require('../app/controllers/BudgetController')
+const CategoryController = require('../app/controllers/CategoryController')
+const ExpenseController = require('../app/controllers/ExpenseController')
+const UserProfileController = require('../app/controllers/UserProfileController')
+const authenticateUser = require('../app/middlewares/authenticate')
+const upload = require('../app/middlewares/upload')
+
+router.post('/api/user/register', UserController.register)
+router.post('/api/user/login', UserController.login)
+router.get('/api/user/account', authenticateUser, UserController.account)
+router.put('/api/user/update', authenticateUser, UserController.update)
+router.delete('/api/user/deleteAccount', authenticateUser, UserController.deleteAccount)
+
+router.post('/api/userProfile/create/:userId', UserProfileController.create)
+router.get('/api/userProfile/show', authenticateUser, UserProfileController.show)
+router.put('/api/userProfile/update', authenticateUser, upload.single('profilePic'), UserProfileController.update)
+
+router.post('/api/budget/create/:userId', BudgetController.create)
+router.get('/api/budget/show', authenticateUser, BudgetController.show)
+router.put('/api/budget/update', authenticateUser, BudgetController.update)
+
+router.post('/api/category/create', authenticateUser, CategoryController.create)
+router.get('/api/category/show', authenticateUser, CategoryController.show)
+router.get('/api/category/showDeleted', authenticateUser, CategoryController.showDeleted)
+router.delete('/api/category/delete/:id', authenticateUser, CategoryController.delete)
+router.delete('/api/category/softdelete/:id', authenticateUser, CategoryController.softDelete)
+router.delete('/api/category/restore/:id', authenticateUser, CategoryController.restore)
+
+router.post('/api/expense/create', authenticateUser, ExpenseController.create)
+router.get('/api/expense/show', authenticateUser, ExpenseController.show)
+router.get('/api/expense/showDeleted', authenticateUser, ExpenseController.showDeleted)
+router.get('/api/expense/showOne/:id', authenticateUser, ExpenseController.showOne)
+router.put('/api/expense/update/:id', authenticateUser, upload.single('invoice'), ExpenseController.update)
+router.delete('/api/expense/delete/:id', authenticateUser, ExpenseController.delete)
+router.delete('/api/expense/softdelete/:id', authenticateUser, ExpenseController.softDelete)
+router.delete('/api/expense/restore/:id', authenticateUser, ExpenseController.restore)
+
+module.exports = router
