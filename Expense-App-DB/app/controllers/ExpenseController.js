@@ -46,7 +46,7 @@ ExpenseController.showOne = (req, res) => {
         })
 }
 
-ExpenseController.update = (req, res) => {
+ExpenseController.updateImage = (req, res) => {
     if (req.file) {
         const id = req.params.id
         const body = req.body
@@ -61,6 +61,18 @@ ExpenseController.update = (req, res) => {
     } else {
         res.json({ errors: 'Only jpg, jpeg, png and pdf file supported!' })
     }
+}
+
+ExpenseController.updateExpense = (req, res) => {
+    const id = req.params.id
+    const body = req.body
+    Expense.findOneAndUpdate({ _id: id, userId: req.user.id }, body, { new: true, runValidations: true })
+        .then((expense) => {
+            res.json(expense)
+        })
+        .catch((err) => {
+            res.json(err)
+        })
 }
 
 ExpenseController.delete = (req, res) => {

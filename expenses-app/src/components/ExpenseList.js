@@ -10,7 +10,7 @@ import { showModal } from "../actions/modalAction";
 import { editButtonClicked } from "../actions/modalAction";
 import { setEditData } from '../actions/modalAction';
 import { startSoftDeleteExpense } from '../actions/expenseAction';
-import { startUpdateExpense } from '../actions/expenseAction';
+import { startUpdateExpenseInvoice } from '../actions/expenseAction';
 
 const ExpenseList = (props) => {
     const [file, setFile] = useState({})
@@ -64,7 +64,7 @@ const ExpenseList = (props) => {
         formdata.append('invoice', file)
         console.log('FORMDATA', formdata)
         console.log('RECORD', recordId)
-        dispatch(startUpdateExpense(recordId, formdata))
+        dispatch(startUpdateExpenseInvoice(recordId, formdata))
         setEditingKey('')
     }
 

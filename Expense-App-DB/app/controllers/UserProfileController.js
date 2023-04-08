@@ -27,6 +27,17 @@ UserProfileController.show = (req, res) => {
 }
 
 UserProfileController.update = (req, res) => {
+    const body = req.body
+    UserProfile.findOneAndUpdate({ userId: req.user.id }, body, { new: true, runValidations: true })
+        .then((profile) => {
+            res.json(profile)
+        })
+        .catch((errors) => {
+            res.json(errors)
+        })
+}
+
+UserProfileController.updateImage = (req, res) => {
     if (req.file) {
         const body = req.body
         body.profilePic = req.file.path

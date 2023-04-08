@@ -26,7 +26,6 @@ const CategoryList = (props) => {
       closeOnCancel: false
     }).then((result) => {
       if (result.isConfirmed) {
-        alert('hi')
         dispatch(startRemoveCategory(id))
         dispatch(startGetCategory())
       }

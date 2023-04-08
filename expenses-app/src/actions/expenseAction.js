@@ -94,6 +94,41 @@ export const startUpdateExpense = (id, data) => {
     }
 }
 
+export const startUpdateExpenseInvoice = (id, data) => {
+    return (dispatch) => {
+
+        axios.put(`http://localhost:3001/api/expense/updateImage/${id}`, data, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+            .then((response) => {
+                const updatedExpense = response.data
+                if (updatedExpense.hasOwnProperty('errors')) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: updatedExpense.errors,
+                        icon: 'error',
+                        width: '300px',
+                        timer: 2000,
+                        showConfirmButton: false
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Expense Successfully Updated',
+                        icon: 'success',
+                        width: '300px',
+                        timer: 2000,
+                        showConfirmButton: false
+                    })
+                    const expenseId = updatedExpense._id
+                    dispatch(updateExpense(expenseId, updatedExpense))
+                }
+            })
+    }
+}
+
 export const startSoftDeleteExpense = (id) => {
     return (dispatch) => {
 

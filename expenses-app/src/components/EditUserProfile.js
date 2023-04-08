@@ -79,10 +79,10 @@ const EditUserProfile = (props) => {
     };
 
     const handleSubmit = () => {
-        let formdata = new FormData()
-        formdata.append('name', name)
-        formdata.append('occupation', occupation)
-        formdata.append('profilePic', file)
+        let formdata = {
+            name:name,
+            occupation:occupation
+        }
 
         dispatch(startUpdateUserProfile(formdata))
         const userFormData = {
@@ -146,12 +146,12 @@ const EditUserProfile = (props) => {
                         <Input name="email" onChange={handleChange} />
 
                     </Form.Item>
-                    <Form.Item
+                    {/* <Form.Item
                         label="profilePic"
                         rules={[{ required: true, message: 'Required!' }]}
                     >
                         <input type='file'  required name="profilePic" onChange={handleChange} />
-                    </Form.Item>
+                    </Form.Item> */}
 
                     <Form.Item>
                         <Button style={{ marginLeft: '150px' }} type="primary" htmlType="submit">{buttonName}</Button>

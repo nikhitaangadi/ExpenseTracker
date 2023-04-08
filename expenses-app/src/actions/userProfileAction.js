@@ -34,8 +34,41 @@ const setUserProfile = (data) => {
 
 export const startUpdateUserProfile = (data) => {
     return (dispatch) => {
-        console.log('DATA')
+        console.log('DATA',data)
         axios.put('http://localhost:3001/api/userProfile/update', data, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+            .then((response) => {
+                const result = response.data
+                console.log('RESULT',result)
+                if (result.hasOwnProperty('errors')) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: result.errors,
+                        icon: 'error',
+                        width: '300px',
+                        timer: 3000,
+                        showConfirmButton: false
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Info!',
+                        text: 'Profile Data Successfully Updated',
+                        icon: 'info',
+                        confirmButtonText: 'Ok'
+                    })
+                    dispatch(setUserProfile(result))
+                }
+            })
+    }
+}
+
+export const startUpdateUserProfileImage = (data) => {
+    return (dispatch) => {
+        console.log('DATA')
+        axios.put('http://localhost:3001/api/userProfile/updateImage', data, {
             headers: {
                 'Authorization': localStorage.getItem('token')
             }
