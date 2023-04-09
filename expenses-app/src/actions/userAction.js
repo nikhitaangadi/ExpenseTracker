@@ -63,7 +63,7 @@ export const startLoginUser = (data, props) => {
                         icon: 'success',
                         width: '300px',
                         timer: '3000',
-                        showConfirmButton: 'false'
+                        showConfirmButton: false
                     })
                     const token = resident.token
                     localStorage.setItem('token', token)

@@ -3,7 +3,7 @@ import 'antd/dist/reset.css';
 import Swal from 'sweetalert2';
 import EditExpenseForm from './EditExpenseForm';
 import { useSelector } from 'react-redux'
-import { Table, Button, Form, Divider } from 'antd'
+import { Table, Button, Form, Divider, Card } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useDispatch } from "react-redux";
 import { showModal } from "../actions/modalAction";
@@ -207,7 +207,8 @@ const ExpenseList = (props) => {
     })
 
     return (
-        <div>
+        <Card type='inner' >
+
             {isClicked && <div> <EditExpenseForm title='Edit Expense' buttonName='Update Expense' /> </div>}
             <Table
                 pagination={{ pageSizeOptions: ['2', '5'], showSizeChanger: true }}
@@ -234,7 +235,7 @@ const ExpenseList = (props) => {
                             invoice: ele.invoice
                         }
                     })} />
-        </div>
+        </Card>
     )
 }
 export default ExpenseList

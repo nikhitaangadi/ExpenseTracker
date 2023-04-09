@@ -83,23 +83,23 @@ const Profile = (props) => {
     }
 
     const handleImageClick = () => {
-    // 👇️ open file input box on click of another element
-    inputRef.current.click();
-  };
+        // 👇️ open file input box on click of another element
+        inputRef.current.click();
+    };
 
-  const updateImage=(e)=>{
-    const formdata=new FormData()
-    formdata.append('profilePic',e.target.files[0])
-    dispatch(startUpdateUserProfileImage(formdata))
-  }
+    const updateImage = (e) => {
+        const formdata = new FormData()
+        formdata.append('profilePic', e.target.files[0])
+        dispatch(startUpdateUserProfileImage(formdata))
+    }
     return (
         <div>
             <input
-        style={{display: 'none'}}
-        ref={inputRef}
-        type="file"
-        onChange={updateImage}
-      />
+                style={{ display: 'none' }}
+                ref={inputRef}
+                type="file"
+                onChange={updateImage}
+            />
             <Layout style={{ height: '100vh' }}>
                 <Sider style={{ backgroundColor: { colorBgContainer } }}>
                     <div style={{ width: '200' }}>
@@ -129,7 +129,7 @@ const Profile = (props) => {
                 <Layout style={{ backgroundColor: 'white' }}>
                     <Col span={10} offset={8}>
                         <Card type="inner" bodyStyle={{ backgroundColor: 'ThreeDFace' }} title={<Title level={3}>PROFILE DETAILS</Title>} >
-                            <div style={{ display: 'flex', justifyContent: 'center', position:'relative' }}>
+                            <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
                                 {userProfile.profilePic ? (
                                     <>
                                         <Image
@@ -137,7 +137,7 @@ const Profile = (props) => {
                                             height={200}
                                             src={`http://localhost:3001/${userProfile.profilePic}`}
                                         />
-                                        <Button type="primary" style={{ marginLeft:'-45px',marginTop:'170px' }} onClick={handleImageClick}><CameraOutlined /></Button>
+                                        <Button style={{ marginLeft: '-52px', marginTop: '160px', backgroundColor: 'transparent', border: 'none' }} onClick={handleImageClick}><CameraOutlined style={{ color: 'Highlight', fontSize: '40px' }} /></Button>
 
                                     </>
 
@@ -149,7 +149,7 @@ const Profile = (props) => {
                                             src={blank_image}
                                         />
 
-                                        <Button type="primary" style={{ marginLeft:'-45px',marginTop:'170px' }} onClick={handleImageClick}><CameraOutlined /></Button>
+                                        <Button style={{ marginLeft: '-52px', marginTop: '160px', backgroundColor: 'transparent', border: 'none' }} onClick={handleImageClick}><CameraOutlined style={{ color: 'Highlight', fontSize: '40px' }} /></Button>
                                     </>
 
                                 )}

@@ -68,7 +68,7 @@ const ExpenseContainer = (props) => {
 
     return (
         <div>
-            <Card type="inner" >
+            <Card type="inner">
                 <Row>
                     <Col span={8}><Button type='primary' onClick={handleClick}>Add Expense</Button></Col>
                     <Col span={8} offset={8}><Input.Search onChange={handleChange} bordered placeholder="input search text" />  </Col>
@@ -76,7 +76,9 @@ const ExpenseContainer = (props) => {
             </Card>
 
             {isShown && isClicked && <div> <AddExpenseForm title='Add Expense' buttonName='Add Expense' /> </div>}
-            <ExpenseList searchValue={searchValue} />
+            <Card type="inner">
+                <ExpenseList searchValue={searchValue} />
+            </Card>
         </div>
     )
 }

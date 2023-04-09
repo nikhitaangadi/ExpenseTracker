@@ -155,21 +155,6 @@ const AddExpenseForm = (props) => {
                             </Form.Item>
 
                             <Form.Item
-                                label="Select Category"
-                                name="categoryId"
-
-                            >
-                                <Select onChange={(value) => { formik.setFieldValue('categoryId', value); }} onSelect={formik.handleChange}>
-                                    {categories.map((ele) => {
-                                        return (<Option key={ele._id} name="categoryId" value={ele._id}>{ele.name}</Option>)
-                                    })}
-                                </Select>
-                            </Form.Item>
-                            {formik.touched.categoryId && formik.errors.categoryId ? (
-                                <div style={{ color: 'red' }}>{formik.errors.categoryId}</div>
-                            ) : null}
-
-                            <Form.Item
                                 label="Expense name"
                                 name="name"
                                 rules={[{ required: true, message: 'Expense name required!' }]}
@@ -182,6 +167,23 @@ const AddExpenseForm = (props) => {
                                     <div style={{ color: 'red' }}>{formik.errors.name}</div>
                                 ) : null}
                             </span>
+
+                            <Form.Item
+                                label="Select Category"
+                                name="categoryId"
+                                rules={[{ required: true, message: 'Category name required!' }]}
+                            >
+                                <Select required onChange={(value) => { formik.setFieldValue('categoryId', value); }} onSelect={formik.handleChange}>
+                                    {categories.map((ele) => {
+                                        return (<Option key={ele._id} name="categoryId" value={ele._id}>{ele.name}</Option>)
+                                    })}
+                                </Select>
+                            </Form.Item>
+                            {/* {formik.touched.categoryId && formik.errors.categoryId ? (
+                                <div style={{ color: 'red' }}>{formik.errors.categoryId}</div>
+                            ) : null} */}
+
+                            
                             <Form.Item
                                 label="Amount"
                                 name="amount"

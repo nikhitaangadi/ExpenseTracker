@@ -57,7 +57,9 @@ export const startUpdateUserProfile = (data) => {
                         title: 'Info!',
                         text: 'Profile Data Successfully Updated',
                         icon: 'info',
-                        confirmButtonText: 'Ok'
+                        width: '300px',
+                        timer: 3000,
+                        showConfirmButton: false
                     })
                     dispatch(setUserProfile(result))
                 }
@@ -89,7 +91,9 @@ export const startUpdateUserProfileImage = (data) => {
                         title: 'Info!',
                         text: 'Profile Data Successfully Updated',
                         icon: 'info',
-                        confirmButtonText: 'Ok'
+                        width: '300px',
+                        timer: 3000,
+                        showConfirmButton: false
                     })
                     dispatch(setUserProfile(result))
                 }

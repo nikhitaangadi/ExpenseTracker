@@ -18,7 +18,7 @@ const Home = (props) => {
     })
 
     return (
-        <Card title={<Title style={{ color: 'white', fontFamily: 'initial', fontWeight: 'lighter',height:'30px' }}>Expense</Title>} bodyStyle={{  height: '100vh' }} style={{ backgroundColor: '#0c2a47', height:'100vh'  }}>
+        <Card title={<Title style={{ color: 'white', fontFamily: 'initial', fontWeight: 'lighter'}}>Expense</Title>} style={{ backgroundColor: '#0c2a47' }}>
 
             {amount === 0 ? (
                 <div style={{ marginTop: '20vh' }}>
@@ -31,11 +31,10 @@ const Home = (props) => {
                     <Card type="inner" >
                         <StatisticsContainer />
                     </Card>
-                    <Card
+                    <Card type="inner"
                         style={{
                             marginTop: 16,
                         }}
-                        type="inner"
                     >
                         <ExpenseContainer />
                     </Card>

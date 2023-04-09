@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, withRouter } from "react-router-dom";
+import { Link, Route, withRouter,Redirect } from "react-router-dom";
 import { ProfileOutlined, SettingOutlined, HomeOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons';
 import MainPage from "./MainPage";
 import Home from "./Home";
@@ -23,7 +23,7 @@ const NavBar1 = (props) => {
   const dispatch = useDispatch()
 
   return (
-    <Layout>
+    <Layout style={{height:'100vh', overflow:'auto'}}>
       <Header
         style={{
           position: 'sticky',
@@ -108,15 +108,18 @@ const NavBar1 = (props) => {
         className="site-layout"
         style={{
           padding: '0 50px',
+          coverflow:'auto',
+
         }}
       >
         <div
           style={{
             padding: 24,
-            minHeight: 520,
             background: colorBgContainer,
+            
           }}
         >
+          <Route exact path="/" component={() => (<Redirect to='/mainpage' />)} />
           <Route exact path='/mainpage' component={MainPage} />
           <Route exact path='/registration' component={Registration} />
           <Route exact path='/login' component={Login} />
@@ -125,12 +128,12 @@ const NavBar1 = (props) => {
           <PrivateRoute exact path='/settings' component={Settings} />
         </div>
       </Content>
-      <Footer
+      {/* <Footer
         style={{
           textAlign: 'center',
         }}
       >
-      </Footer>
+      </Footer> */}
     </Layout>
   );
 }

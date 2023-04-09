@@ -212,7 +212,6 @@ export const startRestoreExpense = (id) => {
             }
         })
             .then((response) => {
-                alert(response.data)
                 const expense = response.data
                 Swal.fire({
                     title: 'Success!',
